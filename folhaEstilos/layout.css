@@ -1,0 +1,88 @@
+body, p{
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem; /*tamanho da fonte, poporcional ao dispositivo de visualização*/
+    font-style: italic; 
+    color: #1d0505; /*cor do text*/
+    text-align: center; /*alinhamento do texto*/
+}
+.principal {
+    width: 80%; /*para os conteúdos não ficarem grudados*/
+    margin: 0 auto;
+    display: grid; /*utilizado para alinhas os elementos em duas dimensões*/
+    grid-template-columns: 75% 25%; /*medida das colunas*/
+    grid-template-rows: 100px 450px 150px; /*medida das linhas do layout*/
+    grid-template-areas: "cabecalho cabecalho"
+                          "secao barra_lateral"
+                          "rodape rodape";
+}
+
+header {
+    grid-area: cabecalho;
+    background-color: rgb(102, 40, 40);
+
+}
+
+section {
+    grid-area: secao;
+    background-color: #4e4eac;
+
+}
+
+aside {
+    grid-area: barra_lateral;
+    background-color: blueviolet;
+}
+
+footer {
+    grid-area: rodape;
+    display:flex ;
+    justify-content: space-evenly; 
+}
+
+.secaof1, .secaof2, .secaof3{
+    width: 25%;
+    background-color: #a34242;
+
+}
+
+.secaof2{
+    width: 50%;
+    margin: 0 2px;
+}
+
+.secaof3{
+    margin: 0;
+}
+@media(max-width:992px){
+    .principal{
+        grid-template-columns: 100%;
+        grid-template-areas: "cabecalho" "secao" "barra_lateral" "rodape";
+        text-align: center;
+    }
+    footer{
+        display:flex;
+        flex-wrap: wrap;/*propriedade que indica ao navegador colocar um elemento abaixo, caso não caiba mais um do lado do outro*/
+        text-align: center;
+    }
+    .secaof1, .secaof2, .secaof3{
+        margin: 0;
+        border: solid 1px #fff;
+        width: 49%;
+    }
+    .secaof2{
+        width: 100%;
+        order: -1;
+    }
+}
+@media(max-width:768px){
+    body{
+        margin: 0 15px;
+    }
+    .principal, .secaof1, .secaof2, .secaof3 {
+        width: 100%;
+    }
+    .secaof2{
+        order: initial;
+    }
+}
